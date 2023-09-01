@@ -11,41 +11,13 @@ import {
 
 export default function Navigation() {
   const [mobileNavOpen, toggleMobileNav] = useCycle(false, true);
-  const { BtnEffect } = useContext(ThemeContext);
+  const { BtnEffect, NavEffect, chiildNavEffect } = useContext(ThemeContext);
 
   const [navFocus, setNavFocus] = useState(0);
   const changeNavFocus = (index) => {
     if (index !== navFocus) {
       setNavFocus(index);
     }
-  };
-
-  const NavEffect = {
-    open: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        when: "beforeChildren",
-      }
-    },
-    closed: {
-      x: "-100%",
-      opacity: 0,
-      transition: {
-        when: "afterChildren",
-      }
-    },
-  };
-
-  const chiildNavEffect = {
-    open: {
-      y: 0,
-      opacity: 1,
-    },
-    closed: {
-      y: "10vh",
-      opacity: 0,
-    },
   };
 
   const navItems = [
@@ -57,7 +29,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="px-5 py-3 md:px-16 md:py-6 backdrop-blur-md bg-black/70">
+    <nav className="px-5 py-3 md:px-16 md:py-6 backdrop-blur-md bg-white/70">
       <div className="sticky flex-row-reverse md:flex-row flex items-center justify-between text-blackn h-max w-full">
         <section className="flex items-center gap-x-4 cursor-pointer">
           <Typography as="a" className="text-2xl font-bold">
