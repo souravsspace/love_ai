@@ -57,7 +57,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="px-5 py-3 md:px-16 md:py-6 backdrop-blur-md bg-white/70">
+    <nav className="px-5 py-3 md:px-16 md:py-6 backdrop-blur-md bg-black/70">
       <div className="sticky flex-row-reverse md:flex-row flex items-center justify-between text-blackn h-max w-full">
         <section className="flex items-center gap-x-4 cursor-pointer">
           <Typography as="a" className="text-2xl font-bold">
