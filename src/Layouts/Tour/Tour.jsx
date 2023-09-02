@@ -1,9 +1,9 @@
 import { Typography } from "@material-tailwind/react";
 import React, { useContext } from "react";
-import DownloadBtn from "../../Components/Multiple/DownloadBtn";
 import { MotionConfig, motion, useCycle } from "framer-motion";
 import { ThemeContext } from "../../App";
 import { FiCornerUpLeft } from "react-icons/fi";
+import BeforeFooter from "../../Components/Multiple/BeforeFooter";
 
 export default function Tour() {
   const [tourVideo, toggleTourVideo] = useCycle(false, true);
@@ -21,7 +21,7 @@ export default function Tour() {
   };
 
   return (
-    <main className="h-full w-full grid place-items-start mt-[6rem] mb-[10rem]">
+    <main className="h-full w-full grid place-items-start mt-[2rem] mb-[10rem]">
       <div className="mx-2 md:mx-10 text-center items-center grid gap-y-20">
         <section>
           <Typography
@@ -52,7 +52,7 @@ export default function Tour() {
                 variants={{
                   open: {
                     opacity: 1,
-                    scale: 1,
+                    y: 0,
                   },
                 }}
                 animate={tourVideo ? "open" : "closed"}
@@ -68,7 +68,7 @@ export default function Tour() {
               variants={{
                 closed: {
                   opacity: 0,
-                  scale: 0,
+                  y: "-100%",
                 },
               }}
               animate={tourVideo ? "open" : "closed"}
@@ -94,17 +94,7 @@ export default function Tour() {
             </motion.div>
           </MotionConfig>
         </section>
-        <section>
-          <Typography
-            className="text-4xl md:text-5xl lg:text-7xl "
-            variant="h1"
-          >
-            Train your app <br /> with Lobhe
-          </Typography>
-          <Typography className="mt-4">
-            <DownloadBtn />
-          </Typography>
-        </section>
+        <BeforeFooter/>
       </div>
     </main>
   );
