@@ -1,4 +1,4 @@
-import { Button, Typography } from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react";
 import React, { useContext, useState } from "react";
 import theLogo from "../assets/logo.ico";
 import { AnimatePresence, MotionConfig, motion, useCycle } from "framer-motion";
@@ -8,6 +8,9 @@ import {
   FaCreativeCommonsNc,
   FaVaadin,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import DownloadBtn from "./Multiple/DownloadBtn";
+
 
 export default function Navigation() {
   const [mobileNavOpen, toggleMobileNav] = useCycle(false, true);
@@ -72,7 +75,7 @@ export default function Navigation() {
                             navFocus === index ? "text-black" : "text-gray"
                           } p-1 font-lg text-lg cursor-pointer hover:text-black`}
                         >
-                          <a>{item.name}</a>
+                          <Link to={item.to}>{item.name}</Link>
                         </Typography>
                       </motion.li>
                     ))}
@@ -118,22 +121,14 @@ export default function Navigation() {
                     navFocus === index ? "text-black" : "text-gray"
                   } p-1 font-normal text-lg cursor-pointer hover:text-black`}
                 >
-                  <a>{item.name}</a>
+                  <Link to={item.to}>{item.name}</Link>
                 </Typography>
               </motion.li>
             ))}
           </ul>
         </section>
         <section className="hidden lg:block">
-          <motion.div variants={BtnEffect} whileTap="tap">
-            <Button
-              variant="gradient"
-              size="lg"
-              className="bg-primary rounded-full hover:scale-105 transition-all ease-linear duration-200"
-            >
-              Download
-            </Button>
-          </motion.div>
+          <DownloadBtn />
         </section>
         <section className="lg:hidden block">
           <motion.button

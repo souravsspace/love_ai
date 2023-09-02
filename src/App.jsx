@@ -4,9 +4,23 @@ import { createContext } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "./Components/Footer";
 
+import Overview from "./Layouts/Overview/Overview";
+import Example from "./Layouts/Example/Example";
+import Tour from "./Layouts/Tour/Tour";
+import Blog from "./Layouts/Blog/Blog";
+import Help from "./Layouts/Help/Help";
+
 export const ThemeContext = createContext();
 
 function App() {
+  const route = [
+    { element: <Overview />, path: "/" },
+    { element: <Example />, path: "/example" },
+    { element: <Tour />, path: "/tour" },
+    { element: <Blog />, path: "/blog" },
+    { element: <Help />, path: "/help" },
+  ];
+
   const NavEffect = {
     open: {
       x: 0,
@@ -51,7 +65,9 @@ function App() {
         <Router>
           <Navigation />
           <Routes>
-            <Route path="/" element={<h1>'test'</h1>} />
+            {route.map((item, index) => (
+              <Route key={index} path={item.path} element={item.element} />
+            ))}
           </Routes>
           <Footer />
         </Router>
